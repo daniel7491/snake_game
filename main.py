@@ -26,7 +26,6 @@ score = 0
 game_over = False
 clicked = False
 
-
 # create snake
 snake_pos = [[int(screen_width / 2), int(screen_height / 2)]]
 snake_pos.append([int(screen_width / 2), int(screen_height / 2) + cell_size])
@@ -44,8 +43,9 @@ red = (255, 0, 0)
 food_col = (200, 50, 50)
 blue = (0, 0, 255)
 
-#set up rectangle for "play again"
-again_rect = Rect(screen_width // 2 -80 ,screen_height // 2, 160, 50)
+# set up rectangle for "play again"
+again_rect = Rect(screen_width // 2 - 80, screen_height // 2, 160, 50)
+
 
 def draw_screen():
     screen.fill(bg)
@@ -75,12 +75,12 @@ def draw_game_over():
     over_txt = "Game over!"
     over_img = font.render(over_txt, True, blue)
     pygame.draw.rect(screen, red, (screen_width // 2 - 80, screen_height // 2 - 60, 160, 50))
-    screen.blit(over_img, (screen_width // 2 -80, screen_height // 2 -50))
+    screen.blit(over_img, (screen_width // 2 - 80, screen_height // 2 - 50))
 
     again_txt = "Play Again?"
     again_img = font.render(again_txt, True, blue)
     pygame.draw.rect(screen, red, again_rect)
-    screen.blit(again_img, (screen_width // 2 -80, screen_height // 2 +10))
+    screen.blit(again_img, (screen_width // 2 - 80, screen_height // 2 + 10))
 
 
 # setup loop with exit event handler
@@ -158,7 +158,7 @@ while run:
             clicked = False
             pos = pygame.mouse.get_pos()
             if again_rect.collidepoint(pos):
-                #reset varabiles
+                # reset varabiles
                 direction = 1  # 1 is up, 2 is right, 3 is down and 4 is left
                 update_snake = 0
                 food = [0, 0]
@@ -172,8 +172,6 @@ while run:
                 snake_pos.append([int(screen_width / 2), int(screen_height / 2) + cell_size])
                 snake_pos.append([int(screen_width / 2), int(screen_height / 2) + cell_size * 2])
                 snake_pos.append([int(screen_width / 2), int(screen_height / 2) + cell_size * 3])
-
-
 
     # draw snake
     head = 1
@@ -193,4 +191,3 @@ while run:
 # end pygame
 pygame.quit()
 
-# create a snake and set up a snake list
