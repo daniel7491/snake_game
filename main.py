@@ -2,6 +2,7 @@
 
 import pygame
 from pygame.locals import *
+import random
 
 pygame.init()
 
@@ -18,6 +19,13 @@ pygame.display.set_caption("Snake")
 cell_size = 10
 direction = 1  # 1 is up, 2 is right, 3 is down and 4 is left
 update_snake = 0
+food = [0, 0]
+new_food = True
+new_piece = [0, 0]
+
+
+
+
 # create snake
 snake_pos = [[int(screen_width / 2), int(screen_height / 2)]]
 snake_pos.append([int(screen_width / 2), int(screen_height / 2) + cell_size])
@@ -29,6 +37,7 @@ bg = (255, 200, 150)
 body_inner = (50, 175, 25)
 body_outer = (100, 100, 200)
 red = (255, 0, 0)
+food_col = (200, 50, 50)
 
 
 def draw_screen():
@@ -53,6 +62,18 @@ while run:
                 direction = 3
             if event.key == pygame.K_LEFT and direction != 2:
                 direction = 4
+
+    # create food
+    if new_food == True:
+        new_food = False
+        food[0] = cell_size * random.randint(0, (screen_width / cell_size) -1)
+        food[1] = cell_size * random.randint(0, (screen_height / cell_size) -1)
+
+
+    #draw food
+    pygame.draw.rect(screen, food_col, (food[0], food[1], cell_size, cell_size))
+
+
 
     if update_snake > 99:
         update_snake = 0
