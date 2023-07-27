@@ -158,7 +158,7 @@ while run:
             clicked = False
             pos = pygame.mouse.get_pos()
             if again_rect.collidepoint(pos):
-                # reset varabiles
+                # reset variables
                 direction = 1  # 1 is up, 2 is right, 3 is down and 4 is left
                 update_snake = 0
                 food = [0, 0]
